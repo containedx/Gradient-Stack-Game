@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro; 
 
 public class BrickController : MonoBehaviour
 {
@@ -14,12 +15,17 @@ public class BrickController : MonoBehaviour
     public CameraMovement cameraMovement;
     public ColorPicker colorPicker;
 
-    public GameController gameController; 
+    public GameController gameController;
+
+    public TextMeshProUGUI scoreText;
+    private int scoreCount;
 
     public void Start()
     {
         colorPicker.Init();
         currentBrick.UpdateColor(colorPicker.GetCurrentColor());
+        scoreCount = 0;
+        scoreText.text = scoreCount.ToString(); 
     }
 
     public void Update()
@@ -41,9 +47,17 @@ public class BrickController : MonoBehaviour
             return; 
         }
 
+        AddScore(); 
+
         CutBrick( difference ); 
 
         CreateNewBrick(); 
+    }
+
+    public void AddScore()
+    {
+        scoreCount++; 
+        scoreText.text = scoreCount.ToString();
     }
     public void CreateNewBrick()
     {

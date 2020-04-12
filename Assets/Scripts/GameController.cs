@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public GameObject StartMenu;
-    public GameObject GameOverMenu; 
+    public GameObject GameOverMenu;
+    public GameObject GameCanvas; 
    public void Play()
     { 
-        StartMenu.SetActive(false); 
+        StartMenu.SetActive(false);
+        GameCanvas.SetActive(true);
     }
 
     public void Rank()
@@ -20,6 +22,7 @@ public class GameController : MonoBehaviour
     public void GameOver()
     {
         GameOverMenu.SetActive(true);
+        GameCanvas.SetActive(false);
     }
 
     public void Ouit()

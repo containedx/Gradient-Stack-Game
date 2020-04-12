@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro; 
 
 public class ColorPicker : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class ColorPicker : MonoBehaviour
 
     [Space]
     public int step;
-    public int currentStep; 
+    public int currentStep;
+
 
     public void Init()
     {
@@ -33,12 +35,12 @@ public class ColorPicker : MonoBehaviour
 
         //losowanie koloru
         color = currentColors[Random.Range(0, currentColors.Count)];
-        currentColors.Remove(color); 
+        currentColors.Remove(color);
     }
 
     public Color GetCurrentColor()
     {
-        currentColor = Color.Lerp(startColor, targetColor, (float)currentStep / step);
+        currentColor = Color.Lerp(startColor, targetColor, (float)currentStep / step); 
         return currentColor; 
     }
 
