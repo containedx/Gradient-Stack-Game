@@ -14,6 +14,8 @@ public class BrickController : MonoBehaviour
     public CameraMovement cameraMovement;
     public ColorPicker colorPicker;
 
+    public GameController gameController; 
+
     public void Start()
     {
         colorPicker.Init();
@@ -35,8 +37,7 @@ public class BrickController : MonoBehaviour
         float difference = previousBrick.leftEdge - currentBrick.leftEdge;
         if( Mathf.Abs(difference) > previousBrick.length)
         {
-            // GAME OVER
-            Debug.Log("GAMEOVER");
+            gameController.GameOver(); 
             return; 
         }
 
