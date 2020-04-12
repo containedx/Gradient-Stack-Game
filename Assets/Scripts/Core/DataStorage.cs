@@ -5,7 +5,6 @@ using TMPro;
 
 public class DataStorage : MonoBehaviour
 {
-    //public GameInfo gameInfo;
 
     public int highScore;
     public TextMeshProUGUI highScoreText;
@@ -45,7 +44,5 @@ public class DataStorage : MonoBehaviour
 
 public static class Keys
 {
-    public const string SAVE_KEY = "Save";
-    public const string LOAD_KEY = "Load";
     public const string HIGHSCORE = "HighScore"; 
 }

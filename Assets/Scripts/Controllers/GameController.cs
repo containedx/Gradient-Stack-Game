@@ -40,4 +40,10 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadScene("Stack");
     }
+
+    public void BackToMenu()
+    {
+        StartMenu.SetActive(true);
+        RankCanvas.SetActive(false);
+    }
 }

@@ -20,12 +20,20 @@ public class BrickController : MonoBehaviour
     public TextMeshProUGUI scoreText;
     private int scoreCount;
 
+    private float speed;
+    private float level; 
+    private int countlevels; 
+
     public void Start()
     {
         colorPicker.Init();
         currentBrick.UpdateColor(colorPicker.GetCurrentColor());
+        
+        scoreText.text = scoreCount.ToString();
+
+        speed = 2;
+        level = 1;
         scoreCount = 0;
-        scoreText.text = scoreCount.ToString(); 
     }
 
     public void Update()
@@ -35,7 +43,10 @@ public class BrickController : MonoBehaviour
             StackBricks(); 
         }
 
-        cameraMovement.UpdatePosition(currentBrick.transform.position.y); 
+        cameraMovement.UpdatePosition(currentBrick.transform.position.y);
+
+        if (countlevels > 10*level)
+            Faster();
     }
 
     public void StackBricks()
@@ -58,6 +69,13 @@ public class BrickController : MonoBehaviour
     {
         scoreCount++; 
         scoreText.text = scoreCount.ToString();
+        countlevels++; 
+    }
+
+    public void Faster()
+    {
+        speed += 0.5f;
+        countlevels = 0; 
     }
     public void CreateNewBrick()
     {
@@ -67,6 +85,7 @@ public class BrickController : MonoBehaviour
         currentBrick = Instantiate(brickPrefab);
         currentBrick.transform.position = previousBrick.transform.position + Vector3.up;
         currentBrick.movement.proocedMove = true;
+        currentBrick.movement.speed = speed; 
         currentBrick.UpdateLine(previousBrick.leftPosition.x, previousBrick.rightPosition.x);
         currentBrick.UpdateColor(colorPicker.GetCurrentColor()); 
     }
