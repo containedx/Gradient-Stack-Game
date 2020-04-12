@@ -43,7 +43,7 @@ public class BrickController : MonoBehaviour
         float difference = previousBrick.leftEdge - currentBrick.leftEdge;
         if( Mathf.Abs(difference) > previousBrick.length)
         {
-            gameController.GameOver(); 
+            gameController.GameOver(scoreCount); 
             return; 
         }
 

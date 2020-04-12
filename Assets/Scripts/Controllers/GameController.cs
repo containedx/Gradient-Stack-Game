@@ -8,6 +8,10 @@ public class GameController : MonoBehaviour
     public GameObject StartMenu;
     public GameObject GameOverMenu;
     public GameObject GameCanvas; 
+    public GameObject RankCanvas;
+
+    public DataStorage dataStorage; 
+ 
    public void Play()
     { 
         StartMenu.SetActive(false);
@@ -16,11 +20,13 @@ public class GameController : MonoBehaviour
 
     public void Rank()
     {
-
+        RankCanvas.SetActive(true); 
     }
 
-    public void GameOver()
+    public void GameOver(int score)
     {
+        dataStorage.SetHighScore(score); 
+
         GameOverMenu.SetActive(true);
         GameCanvas.SetActive(false);
     }
