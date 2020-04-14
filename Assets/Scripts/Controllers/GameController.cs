@@ -23,16 +23,9 @@ public class GameController : MonoBehaviour
     { 
         StartMenu.SetActive(false);
         GameCanvas.SetActive(true);
-
-        activategame(); 
-    }
-
-    IEnumerator activategame()
-    {
-        yield return new WaitForSeconds(1);
-
         gameactive = true; 
     }
+
 
     public void Rank()
     {

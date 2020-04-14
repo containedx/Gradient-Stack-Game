@@ -38,20 +38,20 @@ public class BrickController : MonoBehaviour
 
     public void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.Space))
-
+        
         if(gameController.gameactive)
         {
-            if (Input.GetTouch(0).phase == TouchPhase.Ended)
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 StackBricks();
             }
 
-            if (countlevels > 10 * level)
+            if (countlevels > 6 * level)
                 Faster();
-        }
 
-        cameraMovement.UpdatePosition(currentBrick.transform.position.y);
+            cameraMovement.UpdatePosition(currentBrick.transform.position.y);
+        }
+       
     }
 
     public void StackBricks()
