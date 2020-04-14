@@ -41,7 +41,8 @@ public class BrickController : MonoBehaviour
         
         if(gameController.gameactive)
         {
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            //if (Input.GetTouch(0).phase == TouchPhase.Began)
+            if(Input.GetKeyDown(KeyCode.Space))
             {
                 StackBricks();
             }
