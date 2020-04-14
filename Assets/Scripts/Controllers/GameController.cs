@@ -10,12 +10,28 @@ public class GameController : MonoBehaviour
     public GameObject GameCanvas; 
     public GameObject RankCanvas;
 
-    public DataStorage dataStorage; 
- 
-   public void Play()
+    public bool gameactive; 
+
+    public DataStorage dataStorage;
+
+    public void Start()
+    {
+        gameactive = false; 
+    }
+
+    public void Play()
     { 
         StartMenu.SetActive(false);
         GameCanvas.SetActive(true);
+
+        activategame(); 
+    }
+
+    IEnumerator activategame()
+    {
+        yield return new WaitForSeconds(1);
+
+        gameactive = true; 
     }
 
     public void Rank()
@@ -25,7 +41,8 @@ public class GameController : MonoBehaviour
 
     public void GameOver(int score)
     {
-        dataStorage.SetHighScore(score); 
+        dataStorage.SetHighScore(score);
+        gameactive = false; 
 
         GameOverMenu.SetActive(true);
         GameCanvas.SetActive(false);
